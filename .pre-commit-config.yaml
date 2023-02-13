@@ -20,11 +20,57 @@ repos:
     hooks:
       - id: isort
         args: ["--profile", "black", "--filter-files"]
+#        files: "\\.(py)$"
+#        name: isort
+#        entry: isort
+#        language: python
+#        types:
+#          - python
+#        args: [--setting-pth=pyproject.toml]
 -   repo: https://github.com/psf/black
     rev: 23.1.0
     hooks:
       - id: black
+#        name: black
+#        entry: black
+#        language: python
+#        types:
+#          - python
 -   repo: https://github.com/pycqa/flake8
     rev: 6.0.0
     hooks:
       - id: flake8
+#        name: flake8
+#        entry: flake8
+#        language: python
+#        types:
+#          - python
+#-   repo: local
+#    hooks:
+#      - id: pytest
+#        name: pytest
+#        stages:
+#          - commit
+#        entry: python -m pytest -ra
+#        language: python
+#        additional_dependencies:
+#          - pytest
+#          - fastapi
+#          - httpx
+#      - id: coverage
+#        name: coverage
+#        stages:
+#          - push
+#        entry: coverage run
+#        language: python
+#        types:
+#          - python
+#        pass_filenames: false
+-   repo: local
+    hooks:
+      - id: pytest-check
+        name: pytest-check
+        entry: pytest
+        language: system
+        pass_filenames: false
+        always_run: true
